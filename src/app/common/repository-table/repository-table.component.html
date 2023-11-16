@@ -1,0 +1,49 @@
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>Repository:</th>
+    <td mat-cell *matCellDef="let repository">{{ repository.name }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="html_url">
+    <th mat-header-cell *matHeaderCellDef>Link:</th>
+    <td mat-cell *matCellDef="let repository">
+      <a tabindex="0" [href]="repository.html_url">{{ repository.html_url }}</a>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef>Description:</th>
+    <td mat-cell *matCellDef="let repository">{{ repository.description }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="stargazers_count">
+    <th mat-header-cell *matHeaderCellDef>S.T.A.R.S.</th>
+    <td mat-cell *matCellDef="let repository">
+      {{ repository.stargazers_count }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="action_star">
+    <th mat-header-cell *matHeaderCellDef>Add to Favourite:</th>
+    <td mat-cell *matCellDef="let repository">
+      <img
+        *ngIf="!repository.isFav"
+        tabindex="1"
+        src="./assets/img/star_outline.png"
+        alt="star"
+        (click)="toggleFav(repository.id)"
+        (keyup)="toggleFav(repository.id)" />
+
+      <img
+        *ngIf="repository.isFav"
+        tabindex="1"
+        src="./assets/img/star.png"
+        alt="star_full"
+        (click)="toggleFav(repository.id)"
+        (keyup)="toggleFav(repository.id)" />
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

@@ -1,0 +1,25 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  padding: 0.5rem;
+  background-color: #3f51b5;
+  height: 56px;
+
+  img {
+    width: 32px;
+    height: 32px;
+  }
+
+  h1, h2 {
+    color: white;
+    margin: 0 0 0 0.5rem;
+    cursor: pointer;
+    padding: 0.2rem;
+
+    &:hover {
+      background-color: #26388a;
+      border-radius: 8px;
+    }
+  }
+}
